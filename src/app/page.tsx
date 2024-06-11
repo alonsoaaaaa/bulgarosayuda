@@ -46,9 +46,9 @@ export default function Home() {
           </h2>
           <p className="text-orange-900 max-w-prose mt-2">
             Es una bebida ancestral que se ha consumido por miles de años en
-            Europa y Asia. Se obtiene de la fermentación de la leche entera y es
-            una fuente rica de probióticos, que son bacterias benéficas para
-            nuestro sistema digestivo.
+            America Latina, Europa y Asia. Se obtiene de la fermentación de la
+            leche entera y es una fuente rica de probióticos, que son bacterias
+            benéficas para nuestro sistema digestivo.
           </p>
         </section>
 
