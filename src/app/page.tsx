@@ -12,6 +12,7 @@ import {
   UsersIcon,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -51,7 +52,7 @@ export default function Home() {
           </p>
         </section>
 
-        <div className="flex flex-col items-center text-center">
+        <section className="flex flex-col items-center text-center">
           <h2 className="flex text-xl font-semibold justify-center items-center gap-1">
             Calculadora de leche <CalculatorIcon />
           </h2>
@@ -77,34 +78,12 @@ export default function Home() {
             <GlassWater size={70} />
             <CircleHelpIcon size={50} />
           </div>
-          <Button className="bg-orange-500 hover:bg-orange-400">
-            Calcular
-          </Button>
-        </div>
-        <section className="flex flex-col items-center text-center">
-          <h1 className="font-semibold text-xl">
-            Crea un chat de búlgaros en tu ciudad
-          </h1>
-          <p className="text-orange-900 max-w-prose mt-2">
-            Registrate y crea un grupo para regalar o vender bulgaros cerca de
-            ti y ayuda a más personas a disfrutar de los beneficios de esta
-            bebida.
-          </p>
-          <div className="flex">
-            <UsersIcon size={100} color="black" fill="pink" />
-            {/* <Earth size={100} className="text-green-900" /> */}
 
-            <Image
-              src={"/world-americas.svg"}
-              width={100}
-              height={100}
-              alt="earth"
-            />
-          </div>
-          <Button className="bg-orange-500 hover:bg-orange-400">
-            Crear grupo
+          <Button className="bg-pink-500 hover:bg-pink-400">
+            <Link href={"/calculator"}>Calcular</Link>
           </Button>
         </section>
+
         <section className="flex flex-col items-center text-center">
           <h1 className="font-semibold text-xl">
             Recetas hechas por otras amantes de los búlgaros
@@ -137,10 +116,29 @@ export default function Home() {
             />
           </div>
         </section>
-        <Button className="bg-orange-500 hover:bg-orange-400">
-          Ver recetas
-        </Button>
+        <Button className="bg-pink-500 hover:bg-pink-400">Ver recetas</Button>
       </div>
+      <section className="flex flex-col items-center text-center">
+        <h1 className="font-semibold text-xl">
+          Crea un chat de búlgaros en tu ciudad
+        </h1>
+        <p className="text-orange-900 max-w-prose mt-2">
+          Registrate y crea un grupo para regalar o vender bulgaros cerca de ti
+          y ayuda a más personas a disfrutar de los beneficios de esta bebida.
+        </p>
+        <div className="flex">
+          <UsersIcon size={100} color="black" fill="pink" />
+          {/* <Earth size={100} className="text-green-900" /> */}
+
+          <Image
+            src={"/world-americas.svg"}
+            width={100}
+            height={100}
+            alt="earth"
+          />
+        </div>
+        <Button className="bg-pink-500 hover:bg-pink-400">Crear grupo</Button>
+      </section>
     </>
   );
 }

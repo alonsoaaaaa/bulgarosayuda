@@ -17,11 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className+"flex items-center justify-center"}>
-        <Container>
-        {children}
-        </Container>
-        </body>
+      <body className={inter.className + "flex items-center justify-center"}>
+        <Container>{children}</Container>
+      </body>
     </html>
   );
 }
