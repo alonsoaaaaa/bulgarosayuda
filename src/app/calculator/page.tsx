@@ -8,7 +8,7 @@ import { ClockIcon, MilkIcon, ThermometerIcon } from "lucide-react";
 import { ABeeZee } from "next/font/google";
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 const abeezee = ABeeZee({
   weight: "400",
   subsets: ["latin"],
