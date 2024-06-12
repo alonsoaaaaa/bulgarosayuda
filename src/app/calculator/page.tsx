@@ -185,7 +185,7 @@ export default function KefirCalculator2() {
               </span>
               con{" "}
               <span className={currentCalculus === "kefir" ? "font-bold" : ""}>
-                {displayCalculus.current?.kefir / 20 + " cucharada(s) "}
+                {displayCalculus.current?.kefir + " cucharada(s) "}
               </span>
               y{" "}
               <span className={currentCalculus === "milk" ? "font-bold" : ""}>
