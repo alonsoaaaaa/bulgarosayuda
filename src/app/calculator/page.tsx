@@ -127,7 +127,7 @@ export default function KefirCalculator2() {
                 type="number"
                 step="0.1"
                 id="milk"
-                placeholder="ejemplo: 0.5"
+                placeholder="ejemplo: 1"
                 {...register("milk", { required: true })}
               />
             </div>
