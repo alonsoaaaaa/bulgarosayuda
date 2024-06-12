@@ -215,10 +215,11 @@ export default function KefirCalculator2() {
               </span>
               de leche tendrias que dejarlo{" "}
               <span className={currentCalculus === "time" ? "font-bold" : ""}>
-                {(displayCalculus.current?.time * 60).toFixed(0) +
-                  " minuto(s) / " +
-                  displayCalculus.current?.time +
-                  " hora(s) "}
+                {`${Math.floor(
+                  displayCalculus.current?.time
+                )} hora(s) y ${Math.round(
+                  (displayCalculus.current?.time % 1) * 60
+                )} minuto(s) `}
               </span>
               fermentandose.
             </h1>
