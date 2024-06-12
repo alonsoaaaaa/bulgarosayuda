@@ -139,7 +139,7 @@ export default function KefirCalculator2() {
                 type="number"
                 step="0.1"
                 id="temperature"
-                placeholder="ejemplo: 20 (temperatura promedio de México) / 5 temperatura en refri"
+                placeholder="ejemplo: 20 (ambiente)"
                 {...register("temperature", { required: true })}
               />
             </div>
