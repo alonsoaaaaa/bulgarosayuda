@@ -116,7 +116,9 @@ export default function Home() {
             />
           </div>
         </section>
-        <Button className="bg-pink-500 hover:bg-pink-400">Ver recetas</Button>
+        <Link href={"/blog"}>
+          <Button className="bg-pink-500 hover:bg-pink-400">Ver recetas</Button>
+        </Link>
       </div>
       <section className="flex flex-col items-center text-center">
         <h1 className="font-semibold text-xl">
