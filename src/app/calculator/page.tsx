@@ -25,16 +25,16 @@ export default function KefirCalculator2() {
     let dataWithCalculus = { ...data };
     if (currentCalculus === "temperature") {
       dataWithCalculus.temperature =
-        12 / (data.kefir * 0.5) / (data.milk * 0.5) / (data.time * 0.5);
+        20 / (data.kefir * 0.5) / (data.milk * 0.5) / (data.time * 0.5);
     } else if (currentCalculus === "kefir") {
       dataWithCalculus.kefir =
-        5 / (data.temperature * 0.5) / (data.milk * 0.5) / (data.time * 0.5);
+        8 / (data.temperature * 0.5) / (data.milk * 0.5) / (data.time * 0.5);
     } else if (currentCalculus === "milk") {
       dataWithCalculus.milk =
-        5 / (data.temperature * 0.5) / (data.kefir * 0.5) / (data.time * 0.5);
+        10 / (data.temperature * 0.5) / (data.kefir * 0.5) / (data.time * 0.5);
     } else if (currentCalculus === "time") {
       dataWithCalculus.time =
-        5 / (data.temperature * 0.5) / (data.kefir * 0.5) / (data.milk * 0.5);
+        12 / (data.temperature * 0.5) / (data.kefir * 0.5) / (data.milk * 0.5);
     }
     let dataFormatted = Object.fromEntries(
       Object.entries(dataWithCalculus).map(([key, value]) => [
@@ -193,7 +193,10 @@ export default function KefirCalculator2() {
               </span>
               de leche tendrias que dejarlo{" "}
               <span className={currentCalculus === "time" ? "font-bold" : ""}>
-                {displayCalculus.current?.time + " hora(s) "}
+                {(displayCalculus.current?.time * 60 * 10).toFixed(0) +
+                  " minuto(s) / " +
+                  displayCalculus.current?.time * 10 +
+                  " hora(s) "}
               </span>
               fermentandose.
             </h1>
