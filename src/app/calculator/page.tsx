@@ -85,9 +85,9 @@ export default function KefirCalculator2() {
         <header className="flex flex-col justify-between">
           <div className="flex justify-center">
             <Button
-              className={`bg-yellow-500 text-yellow-800 hover:bg-yellow-600 text-sm w-fit py-0 h-min rounded-xl gap-1 ${
+              className={`bg-blue-500 text-fuchsia-950 hover:bg-blue-600 text-sm w-fit py-0 h-min rounded-xl gap-1 ${
                 currentCalculus === "time"
-                  ? "font-bold bg-yellow-600 underline"
+                  ? "font-bold bg-blue-600 underline"
                   : ""
               }`}
               onClick={() => {
