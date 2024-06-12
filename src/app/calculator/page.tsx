@@ -8,7 +8,7 @@ import { ClockIcon, MilkIcon, ThermometerIcon } from "lucide-react";
 import { ABeeZee } from "next/font/google";
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 const abeezee = ABeeZee({
   weight: "400",
   subsets: ["latin"],
@@ -92,6 +92,7 @@ export default function KefirCalculator2() {
               }`}
               onClick={() => {
                 setCurrentCalculus("time");
+                setShowResult(false);
               }}
             >
               Tiempo <ClockIcon />
@@ -104,6 +105,7 @@ export default function KefirCalculator2() {
               }`}
               onClick={() => {
                 setCurrentCalculus("kefir");
+                setShowResult(false);
               }}
             >
               Cucharadas{" "}
@@ -119,6 +121,7 @@ export default function KefirCalculator2() {
               }`}
               onClick={() => {
                 setCurrentCalculus("milk");
+                setShowResult(false);
               }}
             >
               Leche <MilkIcon fill="white" color="black" />
@@ -129,7 +132,10 @@ export default function KefirCalculator2() {
                   ? "font-bold bg-red-300 underline"
                   : ""
               }`}
-              onClick={() => setCurrentCalculus("temperature")}
+              onClick={() => {
+                setCurrentCalculus("temperature");
+                setShowResult(false);
+              }}
             >
               Temperatura <ThermometerIcon className="text-gray-700" />
             </Button>
