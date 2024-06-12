@@ -130,8 +130,6 @@ export default function Home() {
         </p>
         <div className="flex">
           <UsersIcon size={100} color="black" fill="pink" />
-          {/* <Earth size={100} className="text-green-900" /> */}
-
           <Image
             src={"/world-americas.svg"}
             width={100}
@@ -139,7 +137,9 @@ export default function Home() {
             alt="earth"
           />
         </div>
-        <Button className="bg-pink-500 hover:bg-pink-400">Crear grupo</Button>
+        <Link href={"/groups"}>
+          <Button className="bg-pink-500 hover:bg-pink-400">Crear grupo</Button>
+        </Link>
       </section>
     </>
   );
