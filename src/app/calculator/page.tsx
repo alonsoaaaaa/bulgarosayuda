@@ -25,16 +25,16 @@ export default function KefirCalculator2() {
     let dataWithCalculus = { ...data };
     if (currentCalculus === "temperature") {
       dataWithCalculus.temperature =
-        20 / (data.kefir * 0.5) / (data.milk * 0.5) / (data.time * 0.5);
+        (12000 * data.milk) / (data.kefir * 20 * data.time);
     } else if (currentCalculus === "kefir") {
       dataWithCalculus.kefir =
-        8 / (data.temperature * 0.5) / (data.milk * 0.5) / (data.time * 0.5);
+        (12000 * data.milk) / (data.temperature * data.time);
     } else if (currentCalculus === "milk") {
       dataWithCalculus.milk =
-        10 / (data.temperature * 0.5) / (data.kefir * 0.5) / (data.time * 0.5);
+        (data.time * (data.kefir * 20 * data.temperature)) / 12000;
     } else if (currentCalculus === "time") {
       dataWithCalculus.time =
-        12 / (data.temperature * 0.5) / (data.kefir * 0.5) / (data.milk * 0.5);
+        (12000 * data.milk) / (data.kefir * 20 * data.temperature);
     }
     let dataFormatted = Object.fromEntries(
       Object.entries(dataWithCalculus).map(([key, value]) => [
@@ -146,7 +146,7 @@ export default function KefirCalculator2() {
           )}
           {currentCalculus !== "kefir" && (
             <div>
-              <Label htmlFor="kefir">Cucharadas de kefir (100g c/u):</Label>
+              <Label htmlFor="kefir">Cucharadas de kefir (20g c/u):</Label>
               <Input
                 type="number"
                 step="0.1"
@@ -185,7 +185,7 @@ export default function KefirCalculator2() {
               </span>
               con{" "}
               <span className={currentCalculus === "kefir" ? "font-bold" : ""}>
-                {displayCalculus.current?.kefir + " cucharada(s) "}
+                {displayCalculus.current?.kefir / 20 + " cucharada(s) "}
               </span>
               y{" "}
               <span className={currentCalculus === "milk" ? "font-bold" : ""}>
@@ -193,9 +193,9 @@ export default function KefirCalculator2() {
               </span>
               de leche tendrias que dejarlo{" "}
               <span className={currentCalculus === "time" ? "font-bold" : ""}>
-                {(displayCalculus.current?.time * 60 * 10).toFixed(0) +
+                {(displayCalculus.current?.time * 60).toFixed(0) +
                   " minuto(s) / " +
-                  displayCalculus.current?.time * 10 +
+                  displayCalculus.current?.time +
                   " hora(s) "}
               </span>
               fermentandose.
