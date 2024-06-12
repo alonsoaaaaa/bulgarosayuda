@@ -18,7 +18,7 @@ function BlogPage() {
                 <h1 className="text-fuchsia-500 text-3xl py-2">
                   {recipe.title}
                 </h1>
-                <div className="self-center content-center">
+                <div className="flex self-center content-center justify-center">
                   <Image
                     src={recipe.images[0]}
                     alt={recipe.title}
