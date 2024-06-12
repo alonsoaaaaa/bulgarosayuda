@@ -5,7 +5,9 @@ function LoginPage() {
   return (
     <div>
       <Navbar />
-      <h2>Login</h2>
+      <h2 className="flex size-full text-3xl font-mono justify-center items-center pt-10">
+        PROXIMAMENTE...
+      </h2>
     </div>
   );
 }
