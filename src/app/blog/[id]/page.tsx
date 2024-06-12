@@ -3,6 +3,7 @@ import React from "react";
 import { recipes } from "@/lib/blog";
 import { useParams } from "next/navigation";
 import Navbar from "@/components/navbar";
+import Image from "next/image";
 
 function BlogPage() {
   const { id } = useParams();
@@ -14,8 +15,26 @@ function BlogPage() {
           if (recipe.id === parseInt(id as string)) {
             return (
               <div key={recipe.id}>
-                <h1>{recipe.title}</h1>
-                <p>{recipe.ingredients}</p>
+                <h1 className="text-fuchsia-500 text-3xl py-2">
+                  {recipe.title}
+                </h1>
+                <div className="self-center content-center">
+                  <Image
+                    src={recipe.images[0]}
+                    alt={recipe.title}
+                    width={400}
+                    height={200}
+                    className=""
+                  />
+                </div>
+                <h2 className="text-2xl">Ingredientes</h2>
+                {recipe.ingredients.map((ingredient) => (
+                  <p key={ingredient}>{ingredient}</p>
+                ))}
+                <h2 className="text-2xl">Preparacion</h2>
+                {recipe.preparation.map((step) => (
+                  <p key={step}>{step}</p>
+                ))}
               </div>
             );
           }

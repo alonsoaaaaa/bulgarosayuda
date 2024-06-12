@@ -25,7 +25,7 @@ export default function Home() {
             bulgarosayuda.com
           </h1>
           <p className="text-lg text-gray-600 mt-2">
-            Todo lo que necesitas para tus búlgaros. <br />
+            Todo lo que necesitas para cuidar tus búlgaros. <br />
             En un solo lugar.
           </p>
 
