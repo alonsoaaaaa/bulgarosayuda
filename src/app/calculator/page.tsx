@@ -168,7 +168,7 @@ export default function KefirCalculator2() {
           )}
           {currentCalculus !== "kefir" && (
             <div>
-              <Label htmlFor="kefir">Cucharadas de kefir (20g c/u):</Label>
+              <Label htmlFor="kefir">Cucharadas de búlgaros (20g c/u):</Label>
               <Input
                 type="number"
                 step="0.1"
@@ -229,17 +229,5 @@ export default function KefirCalculator2() {
         )}
       </div>
     </>
-    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    // <form onSubmit={handleSubmit(onSubmit)}>
-    //   {/* register your input into the hook by invoking the "register" function */}
-    //   <input defaultValue="test" {...register("example")} />
-
-    //   {/* include validation with required or other standard HTML validation rules */}
-    //   <input {...register("exampleRequired", { required: true })} />
-    //   {/* errors will return when field validation fails  */}
-    //   {errors.exampleRequired && <span>This field is required</span>}
-
-    //   <input type="submit" />
-    // </form>
   );
 }
