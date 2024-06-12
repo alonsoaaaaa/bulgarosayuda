@@ -1,4 +1,3 @@
-//TODO: CHANGE IMAGES PATHS AND FIX LAYOUT OF RECIPES
 export const recipes = [
   {
     id: 1,
