@@ -85,7 +85,11 @@ export default function KefirCalculator2() {
         <header className="flex flex-col justify-between">
           <div className="flex justify-center">
             <Button
-              className="bg-yellow-500 text-yellow-800 hover:bg-yellow-600 text-sm w-fit py-0 h-min rounded-xl gap-1"
+              className={`bg-yellow-500 text-yellow-800 hover:bg-yellow-600 text-sm w-fit py-0 h-min rounded-xl gap-1 ${
+                currentCalculus === "time"
+                  ? "font-bold bg-yellow-600 underline"
+                  : ""
+              }`}
               onClick={() => {
                 setCurrentCalculus("time");
               }}
@@ -93,7 +97,11 @@ export default function KefirCalculator2() {
               Tiempo <ClockIcon />
             </Button>
             <Button
-              className="bg-amber-200  text-amber-600 hover:bg-amber-300 text-sm w-fit py-0 h-min rounded-xl gap-1"
+              className={`bg-amber-200  text-amber-600 hover:bg-amber-400 text-sm w-fit py-0 h-min rounded-xl gap-1 ${
+                currentCalculus === "kefir"
+                  ? "font-bold bg-amber-400 underline"
+                  : ""
+              }`}
               onClick={() => {
                 setCurrentCalculus("kefir");
               }}
@@ -104,7 +112,11 @@ export default function KefirCalculator2() {
           </div>
           <div className="flex justify-center">
             <Button
-              className="bg-orange-500 text-orange-800 hover:bg-orange-600 text-sm w-fit py-0 h-min rounded-xl gap-1"
+              className={`bg-orange-500 text-orange-800 hover:bg-orange-600 text-sm w-fit py-0 h-min rounded-xl gap-1 ${
+                currentCalculus === "milk"
+                  ? "font-bold bg-orange-600 underline"
+                  : ""
+              }`}
               onClick={() => {
                 setCurrentCalculus("milk");
               }}
@@ -112,7 +124,11 @@ export default function KefirCalculator2() {
               Leche <MilkIcon fill="white" color="black" />
             </Button>
             <Button
-              className="bg-red-200  text-red-600 hover:bg-red-300 text-sm w-fit py-0 h-min rounded-xl gap-1"
+              className={`bg-red-200  text-red-600 hover:bg-red-300 text-sm w-fit py-0 h-min rounded-xl gap-1 ${
+                currentCalculus === "temperature"
+                  ? "font-bold bg-red-300 underline"
+                  : ""
+              }`}
               onClick={() => setCurrentCalculus("temperature")}
             >
               Temperatura <ThermometerIcon className="text-gray-700" />
