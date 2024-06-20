@@ -24,7 +24,7 @@ function BlogPage() {
                     alt={recipe.title}
                     width={400}
                     height={200}
-                    className=""
+                    className="rounded-lg"
                   />
                 </div>
                 <h2 className="text-2xl">Ingredientes</h2>

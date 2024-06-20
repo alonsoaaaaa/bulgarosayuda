@@ -17,7 +17,7 @@ function RecipesPage() {
   return (
     <div className="flex flex-col flex-wrap">
       <Navbar />
-      <div className="flex max-w-[1100px] flex-wrap max-sm:flex-col gap-3 py-2 px-2 max-sm:items-center justify-between">
+      <div className="flex max-w-[1100px] flex-wrap max-sm:flex-col gap-3 py-2 px-2 max-sm:items-center justify-center">
         {recipes.map((recipe) => (
           <Card
             className="flex flex-col justify-between w-[350px] border border-fuchsia-400"
@@ -51,7 +51,9 @@ function RecipesPage() {
             </CardContent>
             <CardFooter className="justify-center">
               <Link href={`/blog/${recipe.id}`}>
-                <Button className="bg-pink-400 self-center">Ver receta</Button>
+                <Button className="bg-pink-400 hover:bg-pink-500 self-center">
+                  Ver receta
+                </Button>
               </Link>
             </CardFooter>
           </Card>

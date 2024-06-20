@@ -7,8 +7,11 @@ import {
   Earth,
   EqualIcon,
   GlassWater,
+  ImageIcon,
   MilkIcon,
   PlusIcon,
+  ThumbsDown,
+  ThumbsUp,
   UsersIcon,
 } from "lucide-react";
 import Image from "next/image";
@@ -61,8 +64,7 @@ export default function Home() {
             leche y tiempo necesitas para hacer un kefir perfecto.
           </p>
           <div className="flex items-center">
-            <h1 className="font-bold">1L</h1>
-            <MilkIcon size={100} className="ml-0.5" />
+            <MilkIcon size={100} className="m-0 p-0" />
             <PlusIcon size={50} />
             <div className="flex flex-col justify-center items-center">
               <Image
@@ -120,6 +122,24 @@ export default function Home() {
           <Button className="bg-pink-500 hover:bg-pink-400">Ver recetas</Button>
         </Link>
       </div>
+      <section className="flex flex-col items-center text-center">
+        <h1 className="font-semibold text-xl">Resuelve tus dudas!</h1>
+        <p className="text-orange-900 max-w-prose mt-2">
+          Sube una imagen de tu kéfir y deja que nuestra inteligencia artificial
+          te diga si los búlgaros que muestras estan en buen estado
+        </p>
+        <div className="flex gap-3 py-2 items-center">
+          <ImageIcon size={100} color="black" fill="white" />
+          <ThumbsUp size={50} color="black" fill="lightpink" />
+          <ThumbsDown size={50} color="black" fill="pink" />
+          {/* ornate-ray-424712-r8-14ad3c627e2a.json */}
+        </div>
+        <Link href={"/groups"}>
+          <Button className="bg-pink-500 hover:bg-pink-400">
+            Consejo de kéfir
+          </Button>
+        </Link>
+      </section>
       <section className="flex flex-col items-center text-center">
         <h1 className="font-semibold text-xl">
           Crea un chat de búlgaros en tu ciudad
