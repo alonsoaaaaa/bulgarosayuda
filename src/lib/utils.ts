@@ -2,8 +2,6 @@ import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { PrismaClient } from "@prisma/client";
 import axios from "axios";
-import Jimp from "jimp";
-
 // import { S3 } from "@aws-sdk/client-s3";
 // import s3Client from "./s3-client";
 // import { ObjectCannedACL, PutObjectCommand } from "@aws-sdk/client-s3";
