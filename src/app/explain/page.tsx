@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { createNonStreamingMultipartContent } from "@/actions";
 import { createImageUrl, convertToBase64 } from "@/lib/utils";
-import { PointerIcon } from "lucide-react";
+import { BrainIcon, PointerIcon } from "lucide-react";
 import Image from "next/image";
 import { auth } from "@/auth";
 async function getSession() {
@@ -42,6 +42,12 @@ function ExplainPage() {
   return (
     <>
       <Navbar />
+      <div className="flex flex-col justify-center items-center text-center content-center">
+        <h1 className="flex text-xl font-semibold pt-4">
+          Hazle preguntas sobre tu kéfir a nuestra IA y resuleve tus dudas...{" "}
+        </h1>
+        <BrainIcon fill="pink" width={50} height={50} />
+      </div>
       {/* {session !== null ? ( */}
       {true ? (
         <form
