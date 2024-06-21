@@ -6,7 +6,12 @@ import {
   Part,
   FileDataPart,
 } from "@google-cloud/vertexai";
-let keyFilename = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+import fs from "fs";
+import path from "path";
+const credentialsJson = process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON;
+const tempFilePath = path.join(__dirname, "google-credentials.json");
+fs.writeFileSync(tempFilePath, credentialsJson!);
+// process.env.GOOGLE_APPLICATION_CREDENTIALS = tempFilePath;
 //After this we send the image to the fuction as a do link
 export async function createNonStreamingMultipartContent(
   base64Image: string,
@@ -26,7 +31,7 @@ export async function createNonStreamingMultipartContent(
     project: projectId,
     location: location,
     googleAuthOptions: {
-      keyFilename: keyFilename,
+      keyFilename: tempFilePath,
       scopes: ["https://www.googleapis.com/auth/cloud-platform"],
     },
   });
