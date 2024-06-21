@@ -42,7 +42,8 @@ function ExplainPage() {
   return (
     <>
       <Navbar />
-      {session !== null ? (
+      {/* {session !== null ? ( */}
+      {true ? (
         <form
           onSubmit={(e) => onSubmit(e)}
           className="flex flex-col justify-center content-center items-center mt-5 gap-3"
