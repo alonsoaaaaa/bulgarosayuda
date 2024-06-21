@@ -136,7 +136,7 @@ export default function Home() {
         </div>
         <Link href={"/explain"}>
           <Button className="bg-pink-500 hover:bg-pink-400">
-            Consejo de kéfir
+            Preguntar a IA
           </Button>
         </Link>
       </section>

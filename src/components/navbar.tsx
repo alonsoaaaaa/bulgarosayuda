@@ -7,7 +7,7 @@ const links = [
   { href: "/login", label: "Iniciar sesión" },
   { href: "/blog", label: "Recetas" },
   { href: "/calculator", label: "Calculadora" },
-  { href: "/explain", label: "Subir imágen" },
+  { href: "/explain", label: "Pregunta IA" },
 ];
 function Navbar() {
   return (
