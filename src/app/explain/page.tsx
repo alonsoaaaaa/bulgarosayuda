@@ -44,7 +44,7 @@ function ExplainPage() {
       <Navbar />
       <div className="flex flex-col justify-center items-center text-center content-center">
         <h1 className="flex text-xl font-semibold pt-4">
-          Hazle preguntas sobre tu kéfir a nuestra IA y resuleve tus dudas...{" "}
+          Hazle preguntas sobre tu kéfir a nuestra IA y resuelve tus dudas...{" "}
         </h1>
         <BrainIcon fill="pink" width={50} height={50} />
       </div>
