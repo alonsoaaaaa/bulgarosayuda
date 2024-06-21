@@ -146,7 +146,7 @@ export default function Home() {
         </h1>
         <p className="text-orange-900 max-w-prose mt-2">
           Registrate y crea un grupo para regalar o vender bulgaros cerca de ti
-          y ayuda a más personas a disfrutar de los beneficios de esta bebida.
+          y ayuda a más personas a disfrutar de los beneficios de esta bebida
         </p>
         <div className="flex">
           <UsersIcon size={100} color="black" fill="pink" />
