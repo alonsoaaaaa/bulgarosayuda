@@ -19,7 +19,7 @@
 # misc
 .DS_Store
 *.pem
-.json
+/src/ornate-ray-424712-r8-14ad3c627e2a.json
 
 # debug
 npm-debug.log*
