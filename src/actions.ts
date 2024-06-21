@@ -17,7 +17,8 @@ export async function createNonStreamingMultipartContent(
   base64Image: string,
   projectId = "ornate-ray-424712-r8",
   location = "us-central1",
-  model = "gemini-1.5-flash-001",
+  // model = "gemini-1.5-flash-001",
+  model = "gemini-1.5-pro-001",
   mimeType = "image/jpeg"
 ) {
   console.log("base64 IMAGE ", base64Image);
