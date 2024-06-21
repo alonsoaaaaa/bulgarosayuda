@@ -42,12 +42,14 @@ export async function createNonStreamingMultipartContent(
     generationConfig: {
       temperature: 0,
     },
+    systemInstruction:
+      "Eres un experto fermentador de kéfir. Entrada: <Imagen de gránulos de kéfir> Tarea: Analiza la imagen de los gránulos de kéfir y genera una respuesta detallada sobre su estado. Tu respuesta debe incluir:- Si los gránulos parecen estar podridos o no, explicando los signos visuales que te llevan a esa conclusión (como cambios de color, presencia de moho, etc.). - Si los gránulos parecen estar sanos y en buen estado, describiendo su aspecto esperado. - Cualquier otro detalle relevante que puedas observar, como la textura, tamaño o forma de los gránulos. - Recomendaciones sobre si es seguro consumir esos gránulos según tu análisis o si sería mejor desecharlos.Tu respuesta debe ser detallada y basada únicamente en la información visual que puedas extraer de la imagen. No hagas suposiciones más allá de lo que se puede observar claramente. Salida: <Respuesta detallada sobre el estado de los gránulos de kéfir en la imagen>",
   });
   let a: GenerateContentRequest;
   // For images, the SDK supports both Google Cloud Storage URI and base64 strings
   const filePart = { inlineData: { data: base64Data, mimeType: mimeType } };
   const textPart = {
-    text: "Entrada: <Imagen de gránulos de kéfir>\nTarea: Analiza la imagen de los gránulos de kéfir y genera una respuesta detallada sobre su estado. Tu respuesta debe incluir:\n- Si los gránulos parecen estar podridos o no, explicando los signos visuales que te llevan a esa conclusión (como cambios de color, presencia de moho, etc.).\n- Si los gránulos parecen estar sanos y en buen estado, describiendo su aspecto esperado.\n- Cualquier otro detalle relevante que puedas observar, como la textura, tamaño o forma de los gránulos.\n- Recomendaciones sobre si es seguro consumir esos gránulos según tu análisis o si sería mejor desecharlos.\nTu respuesta debe ser detallada y basada únicamente en la información visual que puedas extraer de la imagen. No hagas suposiciones más allá de lo que se puede observar claramente.\nSalida: <Respuesta detallada sobre el estado de los gránulos de kéfir en la imagen>",
+    text: "Analiza la imagen",
   };
   const request = {
     contents: [{ role: "user", parts: [filePart, textPart] as Part[] }],
