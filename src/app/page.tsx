@@ -134,7 +134,7 @@ export default function Home() {
           <ThumbsDown size={50} color="black" fill="pink" />
           {/* ornate-ray-424712-r8-14ad3c627e2a.json */}
         </div>
-        <Link href={"/groups"}>
+        <Link href={"/explain"}>
           <Button className="bg-pink-500 hover:bg-pink-400">
             Consejo de kéfir
           </Button>
