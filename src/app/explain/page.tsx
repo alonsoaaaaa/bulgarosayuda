@@ -7,6 +7,7 @@ import { createImageUrl, convertToBase64 } from "@/lib/utils";
 import { BrainIcon, PointerIcon } from "lucide-react";
 import Image from "next/image";
 import { auth } from "@/auth";
+import { Spinner } from "@/components/ui/spinner";
 async function getSession() {
   let session = await auth();
   return session;
@@ -16,6 +17,7 @@ function ExplainPage() {
   let [img, setImg] = useState<File>();
   let [imageUrl, setImageUrl] = useState(null);
   let [explanation, setExplanation] = useState("");
+  let [uploadingStatus, setUploadingStatus] = useState("idle");
   let [session, setSession] = useState<any>(null);
   useEffect(() => {
     // Call getSession and store the result in the session state variable
@@ -29,14 +31,17 @@ function ExplainPage() {
     e.preventDefault();
     if (!img) return;
     let imgUrl = await createImageUrl(img);
-    setImageUrl(imgUrl);
-    console.log("IMAGE URL", imgUrl);
 
+    setImageUrl(imgUrl);
+    setUploadingStatus("uploading");
+    console.log("IMAGE URL", imgUrl);
+    console.log("UPLOADINGSTATUS", uploadingStatus);
     let encodedImg = await convertToBase64(img);
     let explanation = await createNonStreamingMultipartContent(
       encodedImg as string
     );
     if (!explanation) return;
+    setUploadingStatus("uploaded");
     setExplanation(explanation);
   };
   return (
@@ -44,7 +49,10 @@ function ExplainPage() {
       <Navbar />
       <div className="flex flex-col justify-center items-center text-center content-center">
         <h1 className="flex text-xl font-semibold pt-4">
-          Hazle preguntas sobre tu kéfir a nuestra IA y resuelve tus dudas...{" "}
+          Hazle preguntas sobre tu kéfir a nuestra IA y resuelve tus dudas:
+        </h1>
+        <h1 className="flex text-xl font-semibold pt-4 pb-2">
+          Selecciona una imágen y después dale en el botón Subir imágen{" "}
         </h1>
         <BrainIcon fill="pink" width={50} height={50} />
       </div>
@@ -56,7 +64,7 @@ function ExplainPage() {
         >
           <div className="flex gap-3 justify-center items-center pr-32">
             <div className="flex gap-3">
-              <h1 className="font-serif">Seleccionar imágen</h1>
+              <h1 className="font-serif max-md:hidden">Seleccionar imágen</h1>
               <PointerIcon className="rotate-90" />
             </div>
             <Input
@@ -83,7 +91,7 @@ function ExplainPage() {
           Logueate para subir imágenes
         </h1>
       )}
-      {imageUrl != null && (
+      {imageUrl !== null && (
         <div className="flex flex-col justify-center items-center mt-5">
           <Image
             src={imageUrl}
@@ -106,6 +114,7 @@ function ExplainPage() {
           </div>
         </div>
       )}
+      {uploadingStatus === "uploading" && <Spinner />}
     </>
   );
 }

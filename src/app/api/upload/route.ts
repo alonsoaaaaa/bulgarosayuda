@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { NextRequest } from "next/server";
 import { v4 as uuid } from "uuid";
 import s3Client from "@/lib/s3-client";
 import { ObjectCannedACL, PutObjectCommand } from "@aws-sdk/client-s3";
@@ -9,7 +8,7 @@ export async function POST(req: Request) {
     //NOTA: Por alguna razón el getAll no funciona, solo devuelve la ultima imagen agregada con append()
     const data = await req.formData();
     const image: File = data.get("image") as File;
-    let imageDate = new Date().getDate(); //implementar el que despues de una timepo determinado se borren solas las imagenes
+    // let imageDate = new Date().getDate(); //implementar el que despues de una timepo determinado se borren solas las imagenes
     let fileExtension = image.name.split(".").pop();
     let bytes = await image.arrayBuffer();
     let buffer = Buffer.from(bytes);

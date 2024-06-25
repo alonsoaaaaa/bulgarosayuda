@@ -12,12 +12,12 @@ const links = [
 function Navbar() {
   return (
     <header className="flex items-center justify-center bg-gradient-to-r from-fuchsia-300 to-fuchsia-500 h-[10vh] max-sm:h-[20vh] transition-colors duration-500 ease-in-out">
-      <nav className="flex items-center gap-3 flex-wrap justify-evenly">
+      <nav className="flex items-center gap-5 flex-wrap justify-evenly">
         {links.map((link) => (
           <a
             key={link.href}
             href={link.href}
-            className="text-gray-700 font-serif font-semibold text-lg hover:underline max-md:w-min"
+            className="text-gray-700 font-serif font-semibold text-lg text-center hover:underline max-md:w-min"
             style={{ fontSize: "1rem" }}
           >
             {link.label}

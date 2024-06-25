@@ -25,16 +25,16 @@ export default function KefirCalculator2() {
     let dataWithCalculus = { ...data };
     if (currentCalculus === "temperature") {
       dataWithCalculus.temperature =
-        (12000 * data.milk) / (data.kefir * 20 * data.time);
+        (12000 * data.milk) / 1000 / (data.kefir * 20 * data.time);
     } else if (currentCalculus === "kefir") {
       dataWithCalculus.kefir =
-        (12000 * data.milk) / (data.temperature * data.time);
+        (12000 * data.milk) / 1000 / (data.temperature * data.time);
     } else if (currentCalculus === "milk") {
       dataWithCalculus.milk =
         (data.time * (data.kefir * 20 * data.temperature)) / 12000;
     } else if (currentCalculus === "time") {
       dataWithCalculus.time =
-        (12000 * data.milk) / (data.kefir * 20 * data.temperature);
+        (12000 * data.milk) / 1000 / (data.kefir * 20 * data.temperature);
     }
     let dataFormatted = Object.fromEntries(
       Object.entries(dataWithCalculus).map(([key, value]) => [
@@ -144,12 +144,12 @@ export default function KefirCalculator2() {
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
           {currentCalculus !== "milk" && (
             <div>
-              <Label htmlFor="milk">Cantidad de leche (en litros)</Label>
+              <Label htmlFor="milk">Cantidad de leche (en mililitros)</Label>
               <Input
                 type="number"
-                step="0.1"
+                step="1"
                 id="milk"
-                placeholder="ejemplo: 1"
+                placeholder="ejemplo: 1000 = 1 litro"
                 {...register("milk", { required: true })}
               />
             </div>
