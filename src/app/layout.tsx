@@ -40,7 +40,7 @@ export default function RootLayout({
             src="https://www.googletagmanager.com/ns.html?id=GTM-5N9HQHS8"
             height="0"
             width="0"
-            style="display:none;visibility:hidden"
+            style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
         <Container>{children}</Container>
