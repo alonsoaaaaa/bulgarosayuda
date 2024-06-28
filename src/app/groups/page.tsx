@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
 import { getStateInfo } from "@/lib/utils";
-import { cities } from "@/lib/data";
+import cities from "@/lib/data";
 import GroupSection from "./group-section";
 
 async function GroupsPage() {
@@ -16,7 +16,7 @@ async function GroupsPage() {
     <>
       <Navbar />
       <div className="flex flex-col justify-center items-center gap-2">
-        {session ? (
+        {!session ? (
           <>
             <h1 className="text-2xl font-mono">Grupos</h1>
             <p className="text-lg font-mono">
@@ -25,7 +25,7 @@ async function GroupsPage() {
             <div></div>
             <GroupSection stateInfo={stateInfo} />
 
-            <Link href="/groups/create">
+            <Link href="https://chat.whatsapp.com/HWQFTvrdUU12t5RwBiJOZr">
               <Button className="text-black font-bold  bg-orange-500 hover:bg-orange-600">
                 Solicitar un grupo
               </Button>

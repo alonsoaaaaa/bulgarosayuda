@@ -26,7 +26,7 @@ if (process.env.NODE_ENV == "production") globalForPrisma.prisma = prisma;
 
 type City = {
   state: string;
-  locations: string[];
+  locations: { name: string; link: string }[];
   image: string;
   id: number;
 };

@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 import Navbar from "@/components/navbar";
-import { cities } from "@/lib/data";
+import cities from "@/lib/data";
 import { useParams } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import {
@@ -29,7 +29,7 @@ function GroupsByState() {
     newCurrentLocations = cityLocations.filter((location) => {
       return locationRef.current == null || locationRef.current === ""
         ? true
-        : location
+        : location.name
             .toLocaleLowerCase()
             .includes(locationRef.current.toLocaleLowerCase());
     });
@@ -48,16 +48,16 @@ function GroupsByState() {
         {currentLocations.map((location) => (
           <Card
             className="flex flex-col justify-between w-[350px] border border-yellow-400"
-            key={location}
+            key={location.name}
           >
             <CardHeader className="flex text-center">
-              <CardTitle className="text-gray-600">{location}</CardTitle>
+              <CardTitle className="text-gray-600">{location.name}</CardTitle>
             </CardHeader>
             <CardContent>
               <h1>Comparte conocimientos con gente cercana a ti!</h1>
             </CardContent>
             <CardFooter className="justify-center">
-              <Link href={`/groups/1/1`}>
+              <Link href={location.link}>
                 <Button className="bg-yellow-600 hover:bg-yellow-500 self-center">
                   Ver Grupo
                 </Button>
