@@ -16,7 +16,7 @@ async function GroupsPage() {
     <>
       <Navbar />
       <div className="flex flex-col justify-center items-center gap-2">
-        {session ? (
+        {!session ? (
           <>
             <h1 className="text-2xl font-mono">Grupos</h1>
             <p className="text-lg font-mono">
