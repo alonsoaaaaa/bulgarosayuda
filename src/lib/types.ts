@@ -16,7 +16,7 @@ type StateInformation = {
   id: number;
   state: string;
   image: string;
-  locations: LocationInformation[];
+  locations?: LocationInformation[];
 };
 
 /**
