@@ -29,7 +29,7 @@ export default function Home() {
           </h1>
           <p className="text-lg text-gray-600 mt-2">
             Todo lo que necesitas para cuidar tus búlgaros. <br />
-            En un solo lugar.
+            <span className="underline">En un solo lugar.</span>
           </p>
 
           <section className="mt-8">
@@ -47,19 +47,42 @@ export default function Home() {
           <h2 className="text-xl font-semibold">
             ¿Qué es el kefir y para qué sirve?
           </h2>
-          <p className="text-orange-900 max-w-prose mt-2">
+          <p className="text-orange-500 max-w-prose mt-2">
             Es una bebida ancestral que se ha consumido por miles de años en
             America Latina, Europa y Asia. Se obtiene de la fermentación de la
             leche entera y es una fuente rica de probióticos, que son bacterias
             benéficas para nuestro sistema digestivo.
           </p>
         </section>
-
+        <section className="flex flex-col items-center text-center">
+          <h1 className="font-semibold text-xl">
+            Crea un chat de búlgaros en tu ciudad
+          </h1>
+          <p className="text-orange-500 max-w-prose mt-2">
+            Registrate y crea un grupo para regalar o vender bulgaros cerca de
+            ti y ayuda a más personas a disfrutar de los beneficios de esta
+            bebida
+          </p>
+          <div className="flex">
+            <UsersIcon size={100} color="black" fill="pink" />
+            <Image
+              src={"/world-americas.svg"}
+              width={100}
+              height={100}
+              alt="earth"
+            />
+          </div>
+          <Link href={"/groups"}>
+            <Button className="bg-pink-500 hover:bg-pink-400">
+              Crear grupo
+            </Button>
+          </Link>
+        </section>
         <section className="flex flex-col items-center text-center">
           <h2 className="flex text-xl font-semibold justify-center items-center gap-1">
             Calculadora de leche <CalculatorIcon />
           </h2>
-          <p className="text-orange-900 mt-2 max-w-prose">
+          <p className="text-orange-500 mt-2 max-w-prose">
             Prueba nuestra calculadora de leche para saber con exactitud cuanta
             leche y tiempo necesitas para hacer un kefir perfecto.
           </p>
@@ -90,7 +113,7 @@ export default function Home() {
           <h1 className="font-semibold text-xl">
             Recetas hechas por otras amantes de los búlgaros
           </h1>
-          <p className="text-orange-900 max-w-prose mt-2">
+          <p className="text-orange-500 max-w-prose mt-2">
             Descubre las mejores recetas de kefir, yogurt y quesos hechos en
             casa por nuestra comunidad.
           </p>
@@ -122,9 +145,10 @@ export default function Home() {
           <Button className="bg-pink-500 hover:bg-pink-400">Ver recetas</Button>
         </Link>
       </div>
+
       <section className="flex flex-col items-center text-center">
         <h1 className="font-semibold text-xl">Resuelve tus dudas!</h1>
-        <p className="text-orange-900 max-w-prose mt-2">
+        <p className="text-orange-500 max-w-prose mt-2">
           Sube una imagen de tu kéfir y deja que nuestra inteligencia artificial
           te diga si los búlgaros que muestras estan en buen estado
         </p>
@@ -138,27 +162,6 @@ export default function Home() {
           <Button className="bg-pink-500 hover:bg-pink-400">
             Preguntar a IA
           </Button>
-        </Link>
-      </section>
-      <section className="flex flex-col items-center text-center">
-        <h1 className="font-semibold text-xl">
-          Crea un chat de búlgaros en tu ciudad
-        </h1>
-        <p className="text-orange-900 max-w-prose mt-2">
-          Registrate y crea un grupo para regalar o vender bulgaros cerca de ti
-          y ayuda a más personas a disfrutar de los beneficios de esta bebida
-        </p>
-        <div className="flex">
-          <UsersIcon size={100} color="black" fill="pink" />
-          <Image
-            src={"/world-americas.svg"}
-            width={100}
-            height={100}
-            alt="earth"
-          />
-        </div>
-        <Link href={"/groups"}>
-          <Button className="bg-pink-500 hover:bg-pink-400">Crear grupo</Button>
         </Link>
       </section>
     </>

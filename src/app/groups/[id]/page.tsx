@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { ChangeEvent, useRef, useState } from "react";
 import Navbar from "@/components/navbar";
 import cities from "@/lib/data";
 import { useParams } from "next/navigation";
@@ -15,23 +15,23 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 function GroupsByState() {
-  const { id } = useParams();
-  const cityObj = cities.find((city) => city.id === parseInt(id as string));
+  const { id } = useParams<LocationParams>();
+  const cityObj = cities.find((city) => city.id === Number(id));
   const cityName = cityObj?.state || "No encontrado";
   const cityStateObj = cities.filter((city) => city.state === cityName);
-  const cityLocations = cityStateObj[0].locations;
+  const cityLocations: LocationInformation[] = cityStateObj[0].locations;
   const [currentLocations, setCurrentLocations] = useState(cityLocations);
-  let locationRef = useRef("");
-  let newCurrentLocations: any = [];
+  let locationQueryRef = useRef("");
+  let newCurrentLocations: LocationInformation[] = [];
   debugger;
-  const handleInput = (e: any) => {
-    locationRef.current = e.target.value;
+  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+    locationQueryRef.current = e.target?.value;
     newCurrentLocations = cityLocations.filter((location) => {
-      return locationRef.current == null || locationRef.current === ""
-        ? true
+      return locationQueryRef.current == null || locationQueryRef.current === ""
+        ? true //list every location
         : location.name
             .toLocaleLowerCase()
-            .includes(locationRef.current.toLocaleLowerCase());
+            .includes(locationQueryRef.current.toLocaleLowerCase()); //current query is a substring of the current element?
     });
     setCurrentLocations(newCurrentLocations);
   };

@@ -45,7 +45,7 @@ export function getStateInfo(cities: City[]) {
   });
 }
 
-export async function createImageUrl(image: any) {
+export async function createImageUrl(image: File) {
   debugger;
   const formData = new FormData();
   // console.log("Imagen recibida en el createImageUrl: ", image);
@@ -54,18 +54,22 @@ export async function createImageUrl(image: any) {
     method: "POST",
     body: formData,
   });
-  const data = await response.json();
+  console.log("RESPONSE....", response);
+  const data: ImageApiResponse = await response.json();
   const imgUrl = data.imageUrl;
   console.log("URL devuelto por la API route: ", imgUrl);
   return imgUrl;
 }
-export const convertToBase64 = (file: File) => {
+export const convertToBase64 = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
     if (file.type === "image/jpeg" || file.type === "image/jpg") {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
-        resolve(reader.result);
+        if (typeof reader.result === "string") {
+          resolve(reader.result);
+        }
+        reject(new Error("FileReader result is not a string"));
       };
       reader.onerror = (error) => reject(error);
     } else {
@@ -73,4 +77,3 @@ export const convertToBase64 = (file: File) => {
     }
   });
 };
-//TODO: HOW TO CHANGE PNG AND JPG TO JPEG SO PEOPLE CAN UPLOAD IN THE FORMAT THWY WANT

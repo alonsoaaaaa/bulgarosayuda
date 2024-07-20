@@ -10,10 +10,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-const GroupSection = ({ stateInfo }: any) => {
+const GroupSection = ({
+  stateInfo: stateInfoArray,
+}: {
+  stateInfo: StateInformation[];
+}) => {
   return (
     <div className="flex max-w-[1100px] gap-1 flex-wrap justify-center">
-      {stateInfo.map((stateinf: any) => (
+      {stateInfoArray.map((stateinf: StateInformation) => (
         <Card
           className="flex flex-col justify-between w-[350px] border border-yellow-400"
           key={stateinf.state}

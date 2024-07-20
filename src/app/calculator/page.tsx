@@ -7,21 +7,18 @@ import { Label } from "@/components/ui/label";
 import { ClockIcon, MilkIcon, ThermometerIcon } from "lucide-react";
 import { ABeeZee } from "next/font/google";
 import Image from "next/image";
-import { useRef, useState } from "react";
-import { set, useForm } from "react-hook-form";
+import { MutableRefObject, useRef, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 const abeezee = ABeeZee({
   weight: "400",
   subsets: ["latin"],
 });
-type FormData = {
-  kefir: number;
-  milk: number;
-  temperature: number;
-  time: number;
-};
 
 export default function KefirCalculator2() {
-  const calculateParam = (data: FormData, calculus: any) => {
+  const calculateParam = (
+    data: CalculatorData,
+    calculus: MutableRefObject<CalculatorData>
+  ) => {
     let dataWithCalculus = { ...data };
     if (currentCalculus === "temperature") {
       dataWithCalculus.temperature =
@@ -36,23 +33,25 @@ export default function KefirCalculator2() {
       dataWithCalculus.time =
         (12000 * data.milk) / 1000 / (data.kefir * 20 * data.temperature);
     }
-    let dataFormatted = Object.fromEntries(
-      Object.entries(dataWithCalculus).map(([key, value]) => [
-        key,
-        Math.round(value * 100) / 100,
-      ])
-    );
-    calculus.current = dataFormatted;
-    console.log("calculus", calculus.current);
+    calculus.current = {
+      kefir: Math.round(dataWithCalculus.kefir * 100) / 100,
+      milk: Math.round(dataWithCalculus.milk * 100) / 100,
+      temperature: Math.round(dataWithCalculus.temperature * 100) / 100,
+      time: Math.round(dataWithCalculus.time * 100) / 100,
+    };
   };
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm();
-  let displayCalculus: any = useRef();
-  const onSubmit = (data: any) => {
+  } = useForm<CalculatorData>();
+  let displayCalculus = useRef<CalculatorData>({
+    kefir: 0,
+    milk: 0,
+    temperature: 0,
+    time: 0,
+  });
+  const onSubmit: SubmitHandler<CalculatorData> = (data) => {
     calculateParam(data, displayCalculus);
     setShowResult(true);
     console.log("displayCalculus", displayCalculus);
@@ -150,7 +149,7 @@ export default function KefirCalculator2() {
                 step="1"
                 id="milk"
                 placeholder="ejemplo: 1000 = 1 litro"
-                {...register("milk", { required: true })}
+                {...register("milk", { required: true, valueAsNumber: true })}
               />
             </div>
           )}
@@ -162,7 +161,10 @@ export default function KefirCalculator2() {
                 step="0.1"
                 id="temperature"
                 placeholder="ejemplo: 20 (ambiente)"
-                {...register("temperature", { required: true })}
+                {...register("temperature", {
+                  required: true,
+                  valueAsNumber: true,
+                })}
               />
             </div>
           )}
@@ -174,7 +176,7 @@ export default function KefirCalculator2() {
                 step="0.1"
                 id="kefir"
                 placeholder="ejemplo: 2"
-                {...register("kefir", { required: true })}
+                {...register("kefir", { required: true, valueAsNumber: true })}
               />
             </div>
           )}
@@ -186,7 +188,7 @@ export default function KefirCalculator2() {
                 step="0.1"
                 id="time"
                 placeholder="24"
-                {...register("time", { required: true })}
+                {...register("time", { required: true, valueAsNumber: true })}
               />
             </div>
           )}

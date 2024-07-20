@@ -1,7 +1,14 @@
 "use client";
 import Navbar from "@/components/navbar";
 import { Input } from "@/components/ui/input";
-import { ReactNode, useEffect, useRef, useState } from "react";
+import {
+  FormEvent,
+  MutableRefObject,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { createNonStreamingMultipartContent } from "@/actions";
 import { createImageUrl, convertToBase64 } from "@/lib/utils";
 import { BrainIcon, PointerIcon } from "lucide-react";
@@ -15,31 +22,27 @@ async function getSession() {
 
 function ExplainPage() {
   let [img, setImg] = useState<File>();
-  let [imageUrl, setImageUrl] = useState(null);
+  let [imageUrl, setImageUrl] = useState<string>("");
   let [explanation, setExplanation] = useState("");
-  let [uploadingStatus, setUploadingStatus] = useState("idle");
-  let [session, setSession] = useState<any>(null);
-  useEffect(() => {
-    // Call getSession and store the result in the session state variable
-    getSession().then(setSession).catch(console.error);
-  }, []); // Emp
-  let formatedExp = useRef([]);
-  formatedExp.current = explanation.split("- **") as any;
+  let [uploadingStatus, setUploadingStatus] = useState<UploadStatus>("idle");
+  // let [session, setSession] = useState<any>(null);
+  // useEffect(() => {
+  //   // Call getSession and store the result in the session state variable
+  //   getSession().then(setSession).catch(console.error);
+  // }, []);
+  let formatedExp: MutableRefObject<string[]> = useRef([]);
+  formatedExp.current = explanation.split("- **");
   console.log(formatedExp.current);
 
-  let onSubmit = async (e: any) => {
+  let onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!img) return;
-    let imgUrl = await createImageUrl(img);
+    let imgUrl: string = await createImageUrl(img);
 
     setImageUrl(imgUrl);
     setUploadingStatus("uploading");
-    console.log("IMAGE URL", imgUrl);
-    console.log("UPLOADINGSTATUS", uploadingStatus);
     let encodedImg = await convertToBase64(img);
-    let explanation = await createNonStreamingMultipartContent(
-      encodedImg as string
-    );
+    let explanation = await createNonStreamingMultipartContent(encodedImg);
     if (!explanation) return;
     setUploadingStatus("uploaded");
     setExplanation(explanation);
