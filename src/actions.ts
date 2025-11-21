@@ -8,32 +8,32 @@ import {
 } from "@google-cloud/vertexai";
 import fs from "fs";
 import path from "path";
-const credentialsJson = process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON;
-const tempFilePath = path.join(__dirname, "google-credentials.json");
-fs.writeFileSync(tempFilePath, credentialsJson!);
-process.env.GOOGLE_APPLICATION_CREDENTIALS = tempFilePath;
-//After this we send the image to the fuction as a do link
 export async function createNonStreamingMultipartContent(
   base64Image: string,
   projectId = "ornate-ray-424712-r8",
   location = "us-central1",
-  // model = "gemini-1.5-flash-001",
   model = "gemini-1.5-pro-001",
   mimeType = "image/jpeg"
 ) {
+  const credentialsJson = process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON;
+  if (!credentialsJson) {
+    throw new Error("Google credentials not configured");
+  }
+
+  const tempFilePath = path.join("/tmp", "google-credentials.json");
+  fs.writeFileSync(tempFilePath, credentialsJson);
+
   console.log("base64 IMAGE ", base64Image);
-  debugger;
   const base64Data = base64Image.replace(
     /^data:image\/(?:jpg|jpeg);base64,/,
     ""
   );
-  // Initialize Vertex with your Cloud project and location
+
   const vertexAI = new VertexAI({
     project: projectId,
     location: location,
     googleAuthOptions: {
-      // keyFilename: tempFilePath,
-      keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+      keyFilename: tempFilePath,
       scopes: ["https://www.googleapis.com/auth/cloud-platform"],
     },
   });
